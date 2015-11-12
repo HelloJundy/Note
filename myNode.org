@@ -1,0 +1,7 @@
+* emacs 默認路徑
+** 在.emacs中加（setq command-line-default-directory "/your path/")
+*** (setq default-directory "/your path") 沒有效果
+*** The directory that appears in the prompt for C-x C-f ('find-file') comes from the value of default-directory,
+which is a buffer-local variable. When you first start Emacs, the initial buffer displayed is the GNU Emacs buffer.
+ That buffer's default-directory is set from the variable command-line-default-directory.
+***TODO Write letter to Sam Fo

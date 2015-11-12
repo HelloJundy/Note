@@ -1,0 +1,5 @@
+* November
+** TODO ruby on rails tutorail3
+** TODO javascript
+
+
