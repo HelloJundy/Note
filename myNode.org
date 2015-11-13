@@ -5,3 +5,18 @@
 which is a buffer-local variable. When you first start Emacs, the initial buffer displayed is the GNU Emacs buffer.
  That buffer's default-directory is set from the variable command-line-default-directory.
 ***TODO Write letter to Sam Fo
+
+
+* class D 重複定義
+** 重複定義的類 会打开已经定义过的类 添加新的方法；可以创建一个还不存在的类，也可以当做一种副作用
+
+* 打开类技术(open class)
+** 对已经存在的类 重新打开并进行动态的修改，如修改String等
+
+* 猴子补丁
+** 在irb中使用[].methods.grep /^re/ 命令查看 array中以re开头的方法
+   1. 为了避免打开类 追加方法的时候 覆盖掉原来的方法 造成错误；
+
+* 对象中有什么
+** 对象中有实例变量 和 调用它自身的引用 那么实例方法呢
+*** 共享一个类的对象共享同样的方法，所以实例方法应该在类中而不是对象中
