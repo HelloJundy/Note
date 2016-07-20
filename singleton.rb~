@@ -1,0 +1,8 @@
+str1 = "ruby"
+str2 = "ruby"
+
+class << str1
+  def hello
+    "hello , #{self}"
+  end
+end

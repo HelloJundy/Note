@@ -1,6 +1,7 @@
 * todo
 ** 2016-07-20 ~ 2016-07-27
 *** ruby programming
+**** 8 - object
 ** ~
 *** ruby metaprogramming
 ** ~
