@@ -1,0 +1,10 @@
+def total(from ,to )
+  result = 0;
+  (from..to).each do |num|
+    if block_given?
+      result += yield(num)
+    else
+
+    end
+  end
+end

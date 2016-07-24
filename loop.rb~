@@ -1,0 +1,5 @@
+i = 1
+loop do
+  i++
+  break while i = 100
+end
