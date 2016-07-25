@@ -14,7 +14,7 @@ which is a buffer-local variable. When you first start Emacs, the initial buffer
 * 打开类技术(open class)
 ** 对已经存在的类 重新打开并进行动态的修改，如修改String等
 
-
+   
 * 猴子补丁
 ** 在irb中使用[].methods.grep /^re/ 命令查看 array中以re开头的方法
    1. 为了避免打开类 追加方法的时候 覆盖掉原来的方法 造成错误；
