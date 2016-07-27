@@ -1,4 +1,0 @@
-file = FIle.open("hash1.rb")
-file.each_line do |line|
-  p line
-end

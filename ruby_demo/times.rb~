@@ -1,4 +1,0 @@
-ary = []
-10.times do |i|
-  ary.add i
-end

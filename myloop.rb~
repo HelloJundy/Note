@@ -1,8 +1,0 @@
-def myloop
-  while true
-    yiled
-  end
-end
-
-i = 0
-myloog{ p i if i < 100}

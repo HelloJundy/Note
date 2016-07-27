@@ -1,4 +1,0 @@
-module H
-  def hello
-    p "#{self} is good !" 
-end
