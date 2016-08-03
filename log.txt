@@ -1,1 +1,1 @@
-Out put to $stdout.
+hello wkorld 
