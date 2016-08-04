@@ -14,13 +14,22 @@ p row
 p word
 p char
 
-arr = Array.new()
-File.open("text.txt","r+") do |io|
-  io.each_line do |line|
-   p arr << line
+def reverse(input)
+  open(input,"r+") do |f|
+    line = f.readlines
+    f.rewind
+    f.truncate(0)
+    f.write line.reverse.join()
   end
-  io.rewind
-  io.write(arr.reverse.join(""))
 end
 
+#reverse(ARGV[0])
 
+def tail(linenum, filename)
+  open(filename) do |f|
+    lines = f.readlines
+    lines[-(linenum.to_i)..-1].each{|l| print l}
+  end
+end
+
+tail(ARGV[1],ARGV[0])
