@@ -72,3 +72,7 @@
 * Dir.glod 可以像shell一样使用*/?等通配符来取得文件名
 * File.extname(path) 返回path中都扩展名
 * File.split(path) 返回目录名和文件名数组
+### Encoding
+* 拼接字符串时候，如果俩字符串都编码不一样，则会报错(使用Encoding 类的 compatible?(str,str1)方法来检查两个字符串的兼容性)
+* 若相同值都字符串，但是不同编码，会被判断为不一样的字符串
+* 
