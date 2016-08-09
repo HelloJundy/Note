@@ -76,4 +76,15 @@
 * 拼接字符串时候，如果俩字符串都编码不一样，则会报错(使用Encoding 类的 compatible?(str,str1)方法来检查两个字符串的兼容性)
 * 若相同值都字符串，但是不同编码，会被判断为不一样的字符串
 * 正则表达式的编码就是其匹配字符串的编码，如果使用EUC-JP的正则表达式去匹配UTF-8的字符串就会产生错误
-* 
+### Time
+* 使用t = Time.new/Time.now来创建当前时间对象
+* t.year, t.month, t.day 来获取具体数据
+* Time.mktime(year,month,day,hour,min,sec,usec) 创建指定时间对象
+* t.strftime(format) 时间格式化
+* 使用require "time" ，就可以通过Time.parse方法来将字符串转化成时间对像
+* Date 类,使用 d = Date.tody可以获取当日期
+* Date.new(2016,7,-1) -1表示月末
+* 使用加减运算来改变日期
+* d >> 1 来改变月份
+* 同样的可以使用strftime 方法来格式化日期，结果中的时间部分会被置0
+* 使用Date.parse来将字符串转化成日期
