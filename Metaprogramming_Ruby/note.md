@@ -63,4 +63,45 @@ Ruby不仅能在运行时访问到构件的信息，还能创建修改它们！
 ## 猴子补丁
 当我们打开类，并为之添加了一个函数时，需要注意你可能会覆盖掉该类原有的方法，并且可能会造成一些BUG。
 
-在动态语言中，不修改源代码而对功能进行追加和变更，人们称之为：猴子补丁。
+在动态语言中，不修改源代码而对功能进行追加和变更，人们将之称为：猴子补丁。
+
+使用猴子补丁一定要十分小心，为某个类定义新方法时一定要检查一下该类是否已经存在同名方法。
+
+## 实例变量和方法
+
+与java不一样，实例变量与对象的类没有关系。对于同一个类我们可以创建拥有不同实例变量的对象。
+
+	class Myclass
+		def my_method
+			@v = 1
+		end
+		
+		def say_hello
+			p "hello"
+		end
+	end
+	
+	ob1 = Myclass.new
+	ob1.my_method
+	ob1.instance_variables #=> [:@v]
+		
+	ob2 = Myclass.new
+	ob2.instance_variables #=> []
+	
+	Myclass.instance_methods #=>[:my_method, :say_hello, ...]
+	ob2.instance_methods #=> error
+
+由此我们可以看到对象中有实例变量，并且同一个类的不同对象可以有不同的实例变量。
+
+而当我们想要找对象中的方法的时候，结果却是报错 `undefined method 'instance_methods'`
+
+**共享同一个类的对象也共享同样的方法，因此方法存在类中，而非对象中** 所以我们可以通过 `Myclass.instance_methods` 来查看该类的对象可以调用的类。
+
+值得一提的是在这里我们不能说 Myclass 有一个叫 my_method()的方法，因为这样会让人误以为它是一个类方法，可以这样调用`Myclass.my_method()`。
+
+而实际上 my_method() 是Myclass的一个实例方法，需要定义一个Myclass的实例对象才能调用 `ob1.my_method()`
+
+理解了类方法和实例方法的区别，看下面的自省方法才不会困惑：
+
+	String.intance_methods == "abc".methods  #=> true
+	String.methods == "abc".methods #=> false
