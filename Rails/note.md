@@ -72,3 +72,85 @@ User 继承自ApplicationRecord 类,而这个类继承自ActionRecord::Base 类�
 * 初始化：bundle exec guard init
 * 编辑生成的Guardfile文件，让Guard在集成测试和视图发生变化后运行正确的测试
 * 运行 bundle exec guard 开启自动测试
+
+## Model
+
+控制器名是复数，模型名是单数：控制器是 Users，而模型是 User。
+
+模型表示单个用户，而数据库表中存储了很多用户: 数据库表是 users, 而模型是 User
+
+User <= ApplicationRecord <= ActiveRecord::Base
+
+## 迁移文件
+
+change 方法用来定义要对数据库进行什么操作。
+
+使用create_table 方法来新建一个表。
+
+使用rails db:migrate 命令来向上迁移
+
+迁移都是可逆的，撤销上面的迁移可以使用
+
+	rails db:rollback
+
+这个命令会调用drop_table方法，将新建的users表删除，对应新建时的 create_table方法。
+
+## model验证
+
+验证不能为空,长度,唯一性
+
+	validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: true }
+
+查看错误信息
+
+	user.errors.full_messages
+
+Active Record 中的唯一性验证无法保证数据库层也能实现唯一性
+
+在model层建立的唯一性验证会在拥有一定访问量的时候，出现俩条email一样的数据。
+
+解决方法是在数据库层也加上唯一性验证，为email建立索引，然后为索引添加唯一性验证。
+
+## 索引
+
+建立索引
+
+	rails generate migration add_index_to_users_email
+
+添加邮件唯一性迁移
+
+	add_index :users, :email, unique: true
+
+索引本身不保证唯一性，所以需要添加 unique: true
+
+## 使用安全密码机制
+
+使用Rails 中的一个方法基本就能实现了
+
+	has_secure_password
+
+使用了这个方法后，会自动添加以下的功能
+
+* 在数据库中的password_digest 列存储安全的密码哈希值
+* 获得一对虚拟属性，password 和 password_confirmation，而且在创建用户的时候会执行存在性检验和匹配验证
+* 获得 authenticate方法，如果密码正确，返回相应的用户对象，否则反回false
+
+使用 has_secure_password的唯一要求是对应的模型中需要有password_digest的属性。
+
+新建迁移为User添加password_digest列
+
+	rails generate migration add_password_digest_to_users password_digest:string
+
+这里迁移的名字以_to_users 结尾，rails 会自动生成一个向users表添加列的迁移
+
+has_secure_password 使用先进的bcrypt哈希算法密码摘要，我们这里引入bcrypt gem
+
+	gem 'bcrypt', '3.1.11'
+
+has_secure_password 本身会验证存在性，但是只会验证没有密码，不能监测到比如"     "这样无效的密码
+
+所以我们在这基础上需要在modle中添加存在性验证
+
+	validates :password, presence: true, length{ minimum: 6 }
+
+
