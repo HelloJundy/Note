@@ -7,3 +7,4 @@
 | CodeSchool | https://www.codeschool.com/ | |
 | EmacsWiki-Rails | https://www.emacswiki.org/emacs/RubyOnRails | |
 | Rails API | http://api.rubyonrails.org/ ||
+| Heroku | http://www.heroku.com/ |
