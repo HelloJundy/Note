@@ -4,7 +4,8 @@
 | CodeWars |http://codewars.com/| 趣味挑战题 |
 | VueJs |http://vuejs.org/ | VueJs Page |
 | React | http://react-china.org/ | React Page|
-| CodeSchool | https://www.codeschool.com/ | |
-| EmacsWiki-Rails | https://www.emacswiki.org/emacs/RubyOnRails | |
+| CodeSchool | https://www.codeschool.com/ ||
+| EmacsWiki-Rails | https://www.emacswiki.org/emacs/RubyOnRails ||
 | Rails API | http://api.rubyonrails.org/ ||
-| Heroku | http://www.heroku.com/ |
+| Heroku | http://www.heroku.com/ ||
+| Rails 信条 | https://github.com/ruby-china/the-rails-doctrine || 
