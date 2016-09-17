@@ -153,4 +153,64 @@ has_secure_password 本身会验证存在性，但是只会验证没有密码，
 
 	validates :password, presence: true, length{ minimum: 6 }
 
+使用has_secure_password提供的authenticate("password")，这个方法会判断用户提供的密码是否正确
+* 错误返回false
+* 正确则返回对应的用户
+
+## 使用内置的debug方法和params变量
+
+	<%= debug(params) if Rails.env.development? %>
+
+只需要在开发环境中显示调试信息
+
+## 使用debugger，进行断点调试
+
+	Userscontroller:
+	def show
+		@user = User.find(params[:id])
+		debugger
+	end
+
+当访问show动作时控制台会出像(byebug)提示符：
+
+	(byebug)
+	(byebug) @user.name
+	"jundy"
+
+ctrl-D 退出byebug
+
+当觉的哪里有问题的时候，在可能产生问题的代码附近加上debugger
+
+在byebug中可以使用to_yaml方法查看完整的对象属性
+
+	(byebug) puts @user.attributes.to_yaml
+	
+	---
+	id: 1
+	name: hello
+	email: hellojundy@163.com
+	created_at: !ruby/object:ActiveSupport::TimeWithZone
+	utc: &1 2015-09-09 08:11:45.512430000 Z
+	zone: &2 !ruby/object:ActiveSupport::TimeZone
+	name: Etc/UTC
+	time: *1
+	updated_at: !ruby/object:ActiveSupport::TimeWithZone
+	utc: &3 2016-09-14 05:42:20.574433000 Z
+	zone: *2
+	time: *3
+	password_digest: "$2a$10$J7lknJD5dre3oErGTDquTulsvf/DB9EOCWzQi0nVJkL6T.guWlKWa"
+
+## 显示用户头像
+
+我们计划使用<%= gravatar_for @user %>来显示
+
+默认情况下，所有的辅助方法都自动在任意视图可用，不过为了方便管理，我们把gravatar_for 方法放在Users 控制器对应的辅助方法文件中。
+	
+	User_helper.rb:
+	
+	def gravatar_for(user)
+		gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+		gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
+		image_tag(gravatar_url, alt: user.name, class: "gravatar")
+	end
 
