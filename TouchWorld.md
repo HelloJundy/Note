@@ -10,4 +10,5 @@
 | Heroku | http://www.heroku.com/ ||
 | Rails 信条 | https://github.com/ruby-china/the-rails-doctrine || 
 | RubyGems镜像 | https://gems.ruby-china.org ||
-| bootstrap | http://getbootstrap.com/css/ ||
+| Bootstrap | http://getbootstrap.com/css/ ||
+| Icons | http://fontawesome.io/icons/ | |
