@@ -31,7 +31,7 @@ my_object = Greeting.new("Hooooo")
 还可以这样来询问他的实例变量。
 
 ## Active Record
-通过内省机制，Active Record可以查看类的名字，比如类名为movie，Active Record会自动映射到表明为movie的表中，并且它知道如何转换英文单词的单复数。
+通过内省机制，Active Record可以查看类的名字，比如类名为movie，Active Record会自动映射到表名为movie的表中，并且它知道如何转换英文单词的单复数。
 
 ActiveRecord::Base在运行时读取数据库的表模式，当表中包含了 title 和 director 俩个字段，Active Record会自动定义相应的访问器，如 title/title= 俩个方法。
 
@@ -72,13 +72,13 @@ Ruby不仅能在运行时访问到构件的信息，还能创建修改它们！
 与java不一样，实例变量与对象的类没有关系。对于同一个类我们可以创建拥有不同实例变量的对象。
 
 	class Myclass
-		def my_method
-			@v = 1
-		end
+	  def my_method
+	    @v = 1
+	  end
 		
-		def say_hello
-			p "hello"
-		end
+	  def say_hello
+	    p "hello"
+   	  end
 	end
 	
 	ob1 = Myclass.new
