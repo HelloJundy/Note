@@ -12,3 +12,4 @@
 | RubyGems镜像 | https://gems.ruby-china.org ||
 | Bootstrap | http://getbootstrap.com/css/ ||
 | Icons | http://fontawesome.io/icons/ | |
+| codeclimate | https://codeclimate.com/ | 代码评分 |
