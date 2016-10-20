@@ -214,3 +214,51 @@ ctrl-D 退出byebug
 		image_tag(gravatar_url, alt: user.name, class: "gravatar")
 	end
 
+## pluralize
+
+pluralize 方法的第一个参数是整数，返回值是这个数字和第二个参数组合在一起后，正确的单复数形式
+
+	>> helper.pluralize(2, "woman")
+	==> "2 women"
+
+## 会话
+
+HTTP协议没有状态，每个请求都是独立的事件，无法使用之前请求中的信息。
+
+需要用户登录的应用都要使用会话。
+
+会话是两台电脑之间的半永久性链接，如： 运行web浏览器的客户端电脑和运行Rails的服务器。
+
+Rails中实现会话最常见的方式是使用cookie。
+
+## flash
+
+在Rails中，短暂的显示一个消息使用 flash message 实现。
+
+	flash[:success] = "welcome!"
+	flash.now[:danger] = "wrong password!" # 只在当前请求中显示
+	
+	#遍历flash
+	flash.each do |key, value|
+		puts "#{ key }"
+		puts "#{ value }"
+	end
+	
+	=> success
+	=> welcome
+	=> danger
+	=> wrong~
+
+## Session
+
+session 方法创建的临时 cookie 会自动加密，攻击者无法使用会话中的信息以该用户的身份登录。
+
+不过，只有 session 方法创建的临时 cookie 是这样，cookies 方法创建的持久cookie 则有可能会受到会话劫持（session hijacking）攻击。
+
+## find && find_by
+
+	User.find(user_id)
+	User.find_by(id: user_id)
+
+find 方法如果ID无效，则抛出异常
+find 方法则是返回nil。
