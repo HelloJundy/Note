@@ -262,3 +262,34 @@ session 方法创建的临时 cookie 会自动加密，攻击者无法使用会�
 
 find 方法如果ID无效，则抛出异常
 find 方法则是返回nil。
+
+
+## cookie
+
+持久 cookie 有被会话劫持的风险，攻击者可以使用盗取的记忆令牌以某个用户的身份登录。
+
+盗取 cookie 中的信息主要有四种方法
+
+* 使用包嗅探工具截获不安全网络中传输的 cookie
+* 获取包含记忆令牌的数据库
+* 使用跨站脚本（Cross-Site Scripting，简称 XSS）攻击
+* 获取已登录用户的设备访问权
+
+将user_id 存入 cookie
+
+	cookies[:user_id] = user.id
+	
+但是这种方法存储的是纯文本，攻击者很容易就能窃取用户的账户，为了避免这样的情况，我们对cookies签名，存入浏览器前安全加密cookie:
+
+	cookies.signed[:user_id] = user.id
+
+因为我们想让用户id和永久的记忆令牌配对，所以也要永久存储用户id,因此我们可以串联调用signed和permanent方法
+
+	cookies.permanent.signed[:user_id] = user.id
+
+存储了之后，我们可以使用一下方法来取回用户
+
+	User.find_by(id: cookies.signed[:user_id])
+	
+
+
