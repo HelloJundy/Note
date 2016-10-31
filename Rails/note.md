@@ -290,6 +290,3 @@ find_by 方法则是返回nil。
 存储了之后，我们可以使用一下方法来取回用户
 
 	User.find_by(id: cookies.signed[:user_id])
-	
-
-
