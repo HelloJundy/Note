@@ -13,3 +13,4 @@
 | Bootstrap | http://getbootstrap.com/css/ ||
 | Icons | http://fontawesome.io/icons/ | |
 | codeclimate | https://codeclimate.com/ | 代码评分 |
+| semanti-ui | http://semantic-ui.com/ | ui |
