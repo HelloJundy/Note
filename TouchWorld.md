@@ -14,3 +14,4 @@
 | Icons | http://fontawesome.io/icons/ | |
 | codeclimate | https://codeclimate.com/ | 代码评分 |
 | semanti-ui | http://semantic-ui.com/ | ui |
+| |http://placehold.it/  http://lorempixel.com | 图片占位网站 |
